@@ -11,4 +11,4 @@ spec:
       name: lets-encrypt-private-key
     solvers:
       - http01:
-          ingress:
+          ingress: {}
