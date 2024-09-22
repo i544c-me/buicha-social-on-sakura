@@ -8,3 +8,10 @@
 - name: Register as controller
   when: inventory_hostname != groups["controller"][0]
   command: "{{ microk8s_registration_command }}"
+
+- name: Enable addons
+  when: inventory_hostname == groups["controller"][0]
+  shell: |
+    microk8s enable ingress
+    microk8s enable community
+    microk8s enable argocd
