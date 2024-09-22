@@ -1,0 +1,2 @@
+- name: Register as worker
+  command: "{{ hostvars[groups['controller'][0]].microk8s_registration_command.stdout }} --worker"

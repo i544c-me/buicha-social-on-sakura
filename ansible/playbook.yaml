@@ -3,3 +3,15 @@
   become: true
   roles:
     - role: preparation
+
+- name: Setup controller
+  hosts: controller
+  become: true
+  roles:
+    - role: microk8s_controller
+
+- name: Setup worker
+  hosts: worker
+  become: true
+  roles:
+    - role: microk8s_worker

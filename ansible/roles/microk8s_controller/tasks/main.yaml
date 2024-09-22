@@ -1,0 +1,10 @@
+# 最初の1台で登録コマンドを発行する
+- name: Get registration command
+  when: inventory_hostname == groups["controller"][0]
+  command: microk8s add-node --format short
+  register: microk8s_registration_command
+
+# 最初以外の controller で取得したコマンドを使用してクラスターに参加する
+- name: Register as controller
+  when: inventory_hostname != groups["controller"][0]
+  command: "{{ microk8s_registration_command }}"
