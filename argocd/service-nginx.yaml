@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sandbox-nginx
+spec:
+  selector:
+    app: sandbox-nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
