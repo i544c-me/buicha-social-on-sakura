@@ -13,5 +13,6 @@
   when: inventory_hostname == groups["controller"][0]
   shell: |
     microk8s enable ingress
+    microk8s enable cert-manager
     microk8s enable community
     microk8s enable argocd
