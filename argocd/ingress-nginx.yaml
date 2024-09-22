@@ -23,4 +23,4 @@ spec:
   tls:
     - hosts:
       - argocd.i544c.me
-      secretName: argocd-i544c-me-k76wq
+      secretName: argocd-i544c-me
