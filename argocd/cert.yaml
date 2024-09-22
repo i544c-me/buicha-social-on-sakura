@@ -12,4 +12,3 @@ spec:
     solvers:
       - http01:
           ingress:
-            className: nginx
