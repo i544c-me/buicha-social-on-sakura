@@ -1,5 +1,10 @@
-# TODO: この時点でまだ snap がインストールされていないため、この前にインストールしておく必要がある
-- name: Install packages
+- name: Install packages using apt
+  apt:
+    name:
+      - snapd
+    update_cache: true
+
+- name: Install packages using snap
   community.general.snap:
     name:
       - microk8s
