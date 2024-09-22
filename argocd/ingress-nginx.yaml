@@ -19,7 +19,7 @@ spec:
               service:
                 name: sandbox-nginx
                 port:
-                  port: 80
+                  number: 80
   #tls:
   #  - hosts:
   #    - argocd.i544c.me
