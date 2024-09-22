@@ -5,8 +5,8 @@ metadata:
 spec:
   acme:
     email: vrc@i544c.me
-    #server: https://acme-v02.api.letsencrypt.org/directory
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
+    #server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: lets-encrypt-private-key
     solvers:
