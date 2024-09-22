@@ -85,6 +85,11 @@ resource "sakuracloud_packet_filter" "server" {
 
   expression {
     protocol         = "tcp"
+    destination_port = "443"
+  }
+
+  expression {
+    protocol         = "tcp"
     destination_port = "2500"
     source_network   = "${sakuracloud_internet.main.network_address}/${sakuracloud_internet.main.netmask}"
   }
