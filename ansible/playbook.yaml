@@ -1,0 +1,5 @@
+- name: Setup machine
+  hosts: cluster
+  become: true
+  roles:
+    - role: preparation

@@ -1,0 +1,6 @@
+# TODO: この時点でまだ snap がインストールされていないため、この前にインストールしておく必要がある
+- name: Install packages
+  community.general.snap:
+    name:
+      - microk8s
+    classic: true

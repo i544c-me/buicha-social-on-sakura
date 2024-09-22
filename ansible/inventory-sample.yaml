@@ -1,0 +1,10 @@
+cluster:
+  children:
+    controller:
+      hosts:
+        
+    worker:
+      hosts:
+
+  vars:
+    ansible_user: ubuntu
