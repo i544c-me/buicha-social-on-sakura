@@ -23,4 +23,4 @@ spec:
   tls:
     - hosts:
       - argocd.k8s.i544c.me
-      secretName: lets-encrypt-private-key
+      secretName: lets-encrypt-private-key-argocd
