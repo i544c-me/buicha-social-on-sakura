@@ -22,5 +22,5 @@ spec:
                   name: https
   tls:
     - hosts:
-      - "*.k8s.i544c.me"
+      - argocd.k8s.i544c.me
       secretName: lets-encrypt-private-key

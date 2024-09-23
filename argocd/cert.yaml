@@ -10,12 +10,8 @@ spec:
     privateKeySecretRef:
       name: lets-encrypt-private-key
   solvers:
-    - dns01:
-        cloudflare:
-          email: r.sato7690@me.com
-          apiTokenSecretRef:
-            name: cloudflare-api-token
-            key: api-token
+    - http01:
+        ingress: {}
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -29,4 +25,4 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - k8s.i544c.me
-    - "*.k8s.i544c.me"
+    - argocd.k8s.i544c.me
