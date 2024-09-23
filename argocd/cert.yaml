@@ -27,7 +27,6 @@ spec:
   issuerRef:
     name: lets-encrypt
     kind: ClusterIssuer
-  commonName: k8s.i544c.me
   dnsNames:
     - k8s.i544c.me
     - "*.k8s.i544c.me"
