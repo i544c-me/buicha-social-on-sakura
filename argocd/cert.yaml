@@ -9,9 +9,13 @@ spec:
     #server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: lets-encrypt-private-key
-    solvers:
-      - http01:
-          ingress: {}
+  solvers:
+    - dns01:
+        cloudflare:
+          email: r.sato7690@me.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token
+            key: api-token
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
