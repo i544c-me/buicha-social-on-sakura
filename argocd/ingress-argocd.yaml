@@ -1,26 +1,26 @@
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: ingress-argocd
-#  namespace: argocd
-#  annotations:
-#    cert-manager.io/cluster-issuer: lets-encrypt
-#    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#spec:
-#  ingressClassName: nginx
-#  rules:
-#    - host: argocd.i544c.me
-#      http:
-#        paths:
-#          - path: /
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: argo-cd-argocd-server
-#                port:
-#                  name: https
-#  tls:
-#    - hosts:
-#      - argocd.i544c.me
-#      secretName: lets-encrypt-private-key
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-argocd
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: argocd.i544c.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argo-cd-argocd-server
+                port:
+                  name: https
+  tls:
+    - hosts:
+      - argocd.i544c.me
+      secretName: lets-encrypt-private-key
