@@ -5,38 +5,11 @@ metadata:
 spec:
   acme:
     email: vrc@i544c.me
-    server: https://acme-v02.api.letsencrypt.org/directory
-    #server: https://acme-staging-v02.api.letsencrypt.org/directory
+    #server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: lets-encrypt-private-key
   solvers:
     - http01:
-        ingress: {}
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: argocd-i544c-me
-  namespace: argocd
-spec:
-  secretName: lets-encrypt-private-key-argocd
-  issuerRef:
-    name: lets-encrypt
-    kind: ClusterIssuer
-  commonName: argocd.k8s.i544c.me
-  dnsNames:
-    - argocd.k8s.i544c.me
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: k8s-i544c-me
-  namespace: argocd
-spec:
-  secretName: lets-encrypt-private-key-k8s
-  issuerRef:
-    name: lets-encrypt
-    kind: ClusterIssuer
-  commonName: k8s.i544c.me
-  dnsNames:
-    - k8s.i544c.me
+        ingress:
+          class: nginx

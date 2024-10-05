@@ -5,15 +5,13 @@ metadata:
   namespace: argocd
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
-    #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    #nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   rules:
     - host: k8s.i544c.me
       http:
         paths:
-          - path: /nginx/
+          - path: /
             pathType: Prefix
             backend:
               service:
