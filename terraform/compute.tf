@@ -69,7 +69,7 @@ output "k3s_agent_1_ip" {
 
 
 # Packet filter
-
+# パケットフィルタ | さくらのクラウド マニュアル https://manual.sakura.ad.jp/cloud/network/packet-filter.html
 resource "sakuracloud_packet_filter" "server" {
   name = "server"
 
@@ -89,8 +89,45 @@ resource "sakuracloud_packet_filter" "server" {
   }
 
   expression {
+    protocol       = "ip"
+    source_network = "${sakuracloud_internet.main.network_address}/${sakuracloud_internet.main.netmask}"
+    description    = "Allow private network"
+  }
+
+  # NTP からのレスポンスを許可
+  expression {
+    protocol       = "udp"
+    source_network = "210.188.224.14"
+    source_port    = "123"
+    description    = "Allow NTP"
+  }
+
+  # 戻りパケットを許可
+  expression {
     protocol         = "tcp"
-    destination_port = "2500"
-    source_network   = "${sakuracloud_internet.main.network_address}/${sakuracloud_internet.main.netmask}"
+    destination_port = "1024-65535"
+    description      = "Allow 戻りパケット"
+  }
+
+  expression {
+    protocol         = "udp"
+    destination_port = "1024-65535"
+    description      = "Allow 戻りパケット"
+  }
+
+  # ICMP パケットを許可
+  expression {
+    protocol = "icmp"
+  }
+
+  # fragment パケットを許可
+  expression {
+    protocol = "fragment"
+  }
+
+  expression {
+    protocol    = "ip"
+    allow       = false
+    description = "Deny ALL"
   }
 }
