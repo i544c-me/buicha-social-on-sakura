@@ -23,7 +23,7 @@ metadata:
   name: k8s-i544c-me
   namespace: argocd
 spec:
-  secretRef: k8s-i544c-me-secret
+  secretName: k8s-i544c-me-secret
   issuerRef:
     name: lets-encrypt
     kind: ClusterIssuer
