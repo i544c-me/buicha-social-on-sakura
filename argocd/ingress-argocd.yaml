@@ -4,10 +4,8 @@ metadata:
   name: ingress-argocd
   namespace: argocd
   annotations:
-    cert-manager.io/cluster-issuer: lets-encrypt
     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     #nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -24,4 +22,4 @@ spec:
   tls:
     - hosts:
       - argocd.k8s.i544c.me
-      secretName: lets-encrypt-private-key-argocd
+      secretName: k8s-i544c-me-secret
