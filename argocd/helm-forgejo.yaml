@@ -13,6 +13,10 @@ spec:
       valuesObject:
         global:
           storageClass: openebs-jiva-csi-default
+        postgresql-ha:
+          enabled: false
+        postgresql:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
