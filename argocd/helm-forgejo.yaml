@@ -17,6 +17,10 @@ spec:
           enabled: false
         postgresql:
           enabled: true
+        redis-cluster:
+          enabled: false
+        redis:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
