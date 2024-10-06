@@ -21,6 +21,13 @@ spec:
           enabled: false
         redis:
           enabled: true
+
+        gitea:
+          admin:
+            existingSecret: forgejo-admin-secret
+          config:
+            service:
+              DISABLE_REGISTRATION: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

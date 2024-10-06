@@ -10,10 +10,19 @@ argocd app create main \
 
 ```bash
 # for cert-manager
-sudo microk8s kubectl -n cert-manager create secret generic cloudflare-api-token --from-literal=api-token="$TOKEN"
+sudo microk8s kubectl create secret generic cloudflare-api-token \
+  --namespace=cert-manager \
+  --from-literal=api-token="$TOKEN"
 
 # for arc
-kubectl create secret generic github-secret \
+sudo microk8s kubectl create secret generic github-secret \
    --namespace=argocd \
    --from-literal=github_token="$PAT"
+
+# for forgejo
+sudo microk8s kubectl create secret generic forgejo-admin-secret \
+   --namespace=argocd \
+   --from-literal=username=admin \
+   --from-literal=password="$PASSWORD" \
+   --from-literal=email="$EMAIL"
 ```
