@@ -9,3 +9,9 @@
     name:
       - microk8s
     classic: true
+
+- name: Enable iscsid for openebs
+  ansible.builtin.systemd_service:
+    name: iscsid
+    state: started
+    enabled: true

@@ -9,6 +9,10 @@ spec:
     repoURL: codeberg.org/forgejo-contrib
     chart: forgejo
     targetRevision: 9.0.0
+    helm:
+      valuesObject:
+        persistence:
+          storageClass: openebs-jiva-csi-default
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
