@@ -15,4 +15,4 @@
     microk8s enable ingress
     microk8s enable cert-manager
     microk8s enable community
-    microk8s enable argocd
+    microk8s enable argocd -v 7.6.8 # https://artifacthub.io/packages/helm/argo/argo-cd?modal=changelog

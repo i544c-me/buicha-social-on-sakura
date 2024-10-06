@@ -4,7 +4,8 @@
 argocd app create main \
   --repo https://github.com/i544c-me/buicha-social-on-sakura.git --path argocd \
   --dest-server https://kubernetes.default.svc \
-  --dest-namespace default
+  --dest-namespace default \
+  --sync-policy automated
 ```
 
 ```bash
