@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: code.forgejo.org/forgejo-helm
+    repoURL: codeberg.org/forgejo-contrib
     chart: forgejo
-    targetRevision: v9.0.0
+    targetRevision: 9.0.0
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
