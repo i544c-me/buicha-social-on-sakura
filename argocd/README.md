@@ -22,7 +22,7 @@ sudo microk8s kubectl create secret generic github-secret \
 # for forgejo
 sudo microk8s kubectl create secret generic forgejo-admin-secret \
    --namespace=argocd \
-   --from-literal=username=admin \
+   --from-literal=username=i544c \
    --from-literal=password="$PASSWORD" \
    --from-literal=email="$EMAIL"
 ```

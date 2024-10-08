@@ -1,7 +1,7 @@
 resource "sakuracloud_server" "k3s_server" {
   name   = "k3s-server"
   core   = 2
-  memory = 4
+  memory = 6
   disks  = [sakuracloud_disk.k3s_server.id]
 
   disk_edit_parameter {
@@ -38,8 +38,8 @@ output "k3s_server_ip" {
 
 resource "sakuracloud_server" "k3s_agent_1" {
   name   = "k3s-agent-1"
-  core   = 1
-  memory = 1
+  core   = 2
+  memory = 6
   disks  = [sakuracloud_disk.k3s_agent_1.id]
 
   disk_edit_parameter {
