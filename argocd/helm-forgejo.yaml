@@ -38,4 +38,3 @@ spec:
     namespace: argocd
   syncPolicy:
     automated:
-jjlhdww4
