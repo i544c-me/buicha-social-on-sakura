@@ -28,8 +28,14 @@ spec:
           config:
             service:
               DISABLE_REGISTRATION: true
+            storage:
+              STORAGE_TYPE: minio
+          additionalConfigSources:
+          - secret:
+              secretName: forgejo-additional-secret
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:
+jjlhdww4
