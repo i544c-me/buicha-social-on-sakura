@@ -15,7 +15,7 @@ spec:
               service:
                 name: service-openfaas
                 port:
-                  name: http
+                  number: 8080
   tls:
     - hosts:
       - openfaas.k8s.i544c.me
