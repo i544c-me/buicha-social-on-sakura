@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-openfaas
-  namespace: openfaas
+  namespace: argocd
 spec:
   ingressClassName: nginx
   rules:
@@ -20,3 +20,12 @@ spec:
     - hosts:
       - openfaas.k8s.i544c.me
       secretName: k8s-i544c-me-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-openfaas
+  namespace: argocd
+spec:
+  type: ExternalName
+  ExternalName: gateway.openfaas.svc.cluster.local
