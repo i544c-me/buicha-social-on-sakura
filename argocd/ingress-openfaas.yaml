@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: gateway
+                name: service-openfaas
                 port:
                   name: http
   tls:
@@ -28,4 +28,4 @@ metadata:
   namespace: argocd
 spec:
   type: ExternalName
-  ExternalName: gateway.openfaas.svc.cluster.local
+  externalName: gateway.openfaas.svc.cluster.local
