@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: knative-serving
     networking.knative.dev/ingress-provider: kourier
 spec:
-  type: ClusterIP
+  type: ClusterIP # LoadBalancer のままでもいけたかも
   selector:
     app: 3scale-kourier-gateway
   ports:

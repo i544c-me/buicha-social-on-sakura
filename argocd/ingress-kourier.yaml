@@ -15,7 +15,7 @@ spec:
               service:
                 name: service-kourier
                 port:
-                  name: http2
+                  number: 80
   tls:
     - hosts:
       - knative.k8s.i544c.me
