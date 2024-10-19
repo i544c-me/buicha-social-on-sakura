@@ -36,7 +36,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: knative-k8s-i544c-me
-  namespace: default
+  namespace: argocd
 spec:
   secretName: knative-k8s-i544c-me-secret
   issuerRef:
