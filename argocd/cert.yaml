@@ -44,4 +44,5 @@ spec:
     kind: ClusterIssuer
   commonName: default.knative.k8s.i544c.me
   dnsNames:
+  - default.knative.k8s.i544c.me
   - "*.default.knative.k8s.i544c.me"
