@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: parroting
+  labels:
+    run: i544c-knative-service
+spec:
+  template:
+    spec:
+      containers:
+        - image: docker.io/i544c/parroting:latest
+          ports:
+            - containerPort: 8080

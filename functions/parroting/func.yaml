@@ -1,0 +1,7 @@
+specVersion: 0.36.0
+name: parroting
+runtime: node
+registry: docker.io/i544c
+created: 2024-10-20T02:33:41.31892916+09:00
+build:
+  builder: pack
