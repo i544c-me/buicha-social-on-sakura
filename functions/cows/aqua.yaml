@@ -8,8 +8,6 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.220.1 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.237.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: hashicorp/terraform@v1.9.5
-- name: argoproj/argo-cd@v2.12.3
-- name: knative/func@knative-v1.15.1
+- name: nodejs/node@v20.18.0
