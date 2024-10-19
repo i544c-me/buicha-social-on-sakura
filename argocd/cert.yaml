@@ -31,3 +31,17 @@ spec:
   dnsNames:
   - k8s.i544c.me
   - "*.k8s.i544c.me"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: knative-k8s-i544c-me
+  namespace: default
+spec:
+  secretName: knative-k8s-i544c-me-secret
+  issuerRef:
+    name: lets-encrypt
+    kind: ClusterIssuer
+  commonName: default.knative.k8s.i544c.me
+  dnsNames:
+  - "*.default.knative.k8s.i544c.me"

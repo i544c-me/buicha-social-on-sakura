@@ -16,10 +16,10 @@ spec:
                 name: service-kourier
                 port:
                   number: 80
-  #tls:
-  #  - hosts:
-  #    - "*.default.knative.k8s.i544c.me"
-  #    secretName: k8s-i544c-me-secret
+  tls:
+    - hosts:
+      - "*.default.knative.k8s.i544c.me"
+      secretName: knative-k8s-i544c-me-secret
 ---
 apiVersion: v1
 kind: Service
