@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: config-domain
+  namespace: knative-serving
 data:
   knative.k8s.i544c.me: |
     selector:
