@@ -2,6 +2,8 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: hello
+  labels:
+    run: i544c-knative-service
 spec:
   template:
     spec:
