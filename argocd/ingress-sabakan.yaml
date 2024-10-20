@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-discord-bot-sabakan
+  namespace: argocd
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sabakan.k8s.i544c.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: discord-bot-sabakan
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+      - sabakan.k8s.i544c.me
+      secretName: k8s-i544c-me-secret
+

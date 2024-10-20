@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-bot-sabakan
+  namespace: argocd
+  labels:
+    app: discord-bot-sabakan
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: discord-bot-sabakan
+  template:
+    metadata:
+      labels:
+        app: discord-bot-sabakan
+    spec:
+      containers:
+      - name: sabakan
+        image: i544c/discord-bot-sabakan:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - secretRef:
+            name: discord-bot-sabakan
