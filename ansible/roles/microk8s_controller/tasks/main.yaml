@@ -17,4 +17,3 @@
     microk8s enable community
     microk8s enable argocd -v 7.6.8 # https://artifacthub.io/packages/helm/argo/argo-cd?modal=changelog
     microk8s enable openebs
-    microk8s enable openfaas
