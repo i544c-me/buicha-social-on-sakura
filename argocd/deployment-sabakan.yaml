@@ -7,6 +7,7 @@ metadata:
     app: discord-bot-sabakan
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: discord-bot-sabakan
