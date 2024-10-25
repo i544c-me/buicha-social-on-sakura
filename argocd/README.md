@@ -25,4 +25,11 @@ sudo microk8s kubectl create secret generic forgejo-admin-secret \
    --from-literal=username=i544c \
    --from-literal=password="$PASSWORD" \
    --from-literal=email="$EMAIL"
+
+# for sacloud
+sudo microk8s kubectl create secret generic discord-bot-sabakan-sacloud \
+   --namespace=argocd \
+   --from-literal=SAKURACLOUD_ACCESS_TOKEN=$TOKEN \
+   --from-literal=SAKURACLOUD_ACCESS_TOKEN_SECRET=$SECRET \
+   --from-literal=SAKURACLOUD_ZONE=is1a
 ```

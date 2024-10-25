@@ -17,9 +17,11 @@ spec:
     spec:
       containers:
       - name: sabakan
-        image: i544c/discord-bot-sabakan:0.1
+        image: i544c/discord-bot-sabakan:0.2
         ports:
         - containerPort: 3000
         envFrom:
         - secretRef:
             name: discord-bot-sabakan
+        - secretRef:
+            name: discord-bot-sabakan-sacloud
