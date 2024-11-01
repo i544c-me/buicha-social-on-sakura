@@ -1,13 +1,20 @@
-resource "sakuracloud_server" "k3s_server" {
-  name   = "k3s-server"
+locals {
+  server_num = 2
+  agent_num  = 1
+}
+
+resource "sakuracloud_server" "k8s_server" {
+  count = local.server_num
+
+  name   = "k8s-server-${count.index}"
   core   = 4
   memory = 8
-  disks  = [sakuracloud_disk.k3s_server.id]
+  disks  = [sakuracloud_disk.k8s_server[count.index].id]
 
   disk_edit_parameter {
-    hostname   = "k3s-server"
+    hostname   = "k8s-server-${count.index}"
     ssh_keys   = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO2Rn7JefBOiZlbRfEdgEHYneUT8Bl1LH7I08cC2lxWP"]
-    ip_address = sakuracloud_internet.main.ip_addresses[0]
+    ip_address = sakuracloud_internet.main.ip_addresses[count.index]
     netmask    = sakuracloud_internet.main.netmask
     gateway    = sakuracloud_internet.main.gateway
   }
@@ -24,28 +31,33 @@ data "sakuracloud_archive" "ubuntu" {
   os_type = "ubuntu2204"
 }
 
-resource "sakuracloud_disk" "k3s_server" {
-  name              = "k3s-server"
+resource "sakuracloud_disk" "k8s_server" {
+  count = 2
+
+  name              = "k3s-server-${count.index}"
   source_archive_id = data.sakuracloud_archive.ubuntu.id
+  size              = 40
 }
 
-output "k3s_server_ip" {
-  value = sakuracloud_server.k3s_server.ip_address
+output "k8s_server_ip" {
+  value = sakuracloud_server.k8s_server[*].ip_address
 }
 
 
-# agent-1
+# agent
 
-resource "sakuracloud_server" "k3s_agent_1" {
-  name   = "k3s-agent-1"
-  core   = 4
-  memory = 8
-  disks  = [sakuracloud_disk.k3s_agent_1.id]
+resource "sakuracloud_server" "k8s_agent" {
+  count = local.agent_num
+
+  name   = "k8s-agent-${count.index}"
+  core   = 2
+  memory = 4
+  disks  = [sakuracloud_disk.k8s_agent[count.index].id]
 
   disk_edit_parameter {
-    hostname   = "k3s-agent-1"
+    hostname   = "k3s-agent-${count.index}"
     ssh_keys   = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO2Rn7JefBOiZlbRfEdgEHYneUT8Bl1LH7I08cC2lxWP"]
-    ip_address = sakuracloud_internet.main.ip_addresses[1]
+    ip_address = sakuracloud_internet.main.ip_addresses[local.server_num + count.index]
     netmask    = sakuracloud_internet.main.netmask
     gateway    = sakuracloud_internet.main.gateway
   }
@@ -58,13 +70,16 @@ resource "sakuracloud_server" "k3s_agent_1" {
   tags = ["buichasocial"]
 }
 
-resource "sakuracloud_disk" "k3s_agent_1" {
-  name              = "k3s-agent-1"
+resource "sakuracloud_disk" "k8s_agent" {
+  count = local.agent_num
+
+  name              = "k3s-agent-${count.index}"
   source_archive_id = data.sakuracloud_archive.ubuntu.id
+  size              = 40
 }
 
-output "k3s_agent_1_ip" {
-  value = sakuracloud_server.k3s_agent_1.ip_address
+output "k8s_agent_ip" {
+  value = sakuracloud_server.k8s_agent[*].ip_address
 }
 
 
