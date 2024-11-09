@@ -19,10 +19,6 @@ spec:
       containers:
       - name: checker
         image: i544c/trust-rank-checker:0.1
-        resources:
-          limits:
-            cpu: 0.25m
-            memory: 32Mi
         ports:
         - containerPort: 8000
         envFrom:
