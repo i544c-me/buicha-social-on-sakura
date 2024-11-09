@@ -26,6 +26,30 @@ sudo microk8s kubectl create secret generic forgejo-admin-secret \
    --from-literal=password="$PASSWORD" \
    --from-literal=email="$EMAIL"
 
+sudo microk8s kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: forgejo-additional-secret
+  namespace: argocd
+stringData:
+  storage: |
+    MINIO_USE_SSL=true
+    MINIO_ENDPOINT=$ID.r2.cloudflarestorage.com:443
+    MINIO_ACCESS_KEY_ID=$KEY
+    MINIO_SECRET_ACCESS_KEY=$SECRET
+    MINIO_BUCKET=$BUCKET
+    MINIO_LOCATION=apac
+    MINIO_CHECKSUM_ALGORITHM=md5
+EOF
+
+# for discord bot
+sudo microk8s kubectl create secret generic discord-bot-sabakan \
+   --namespace=argocd \
+   --from-literal=APP_ID=$APP_ID \
+   --from-literal=PUBLIC_KEY=$PUBLIC_KEY \
+   --from-literal=DISCORD_TOKEN=$DISCORD_TOKEN
+
 # for sacloud
 sudo microk8s kubectl create secret generic discord-bot-sabakan-sacloud \
    --namespace=argocd \
