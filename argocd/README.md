@@ -56,4 +56,11 @@ sudo microk8s kubectl create secret generic discord-bot-sabakan-sacloud \
    --from-literal=SAKURACLOUD_ACCESS_TOKEN=$TOKEN \
    --from-literal=SAKURACLOUD_ACCESS_TOKEN_SECRET=$SECRET \
    --from-literal=SAKURACLOUD_ZONE=is1a
+
+# for trust-rank-checker
+sudo microk8s kubectl create secret generic trust-rank-checker \
+   --namespace=argocd \
+   --from-literal=VRC_USERNAME="$VRC_USERNAME" \
+   --from-literal=VRC_PASSWORD="$VRC_PASSWORD" \
+   --from-literal=VRC_COOKIE="$VRC_COOKIE"
 ```

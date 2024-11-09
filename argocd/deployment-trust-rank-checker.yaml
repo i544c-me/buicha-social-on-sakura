@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trust-rank-checker
+  namespace: argocd
+  labels:
+    app: trust-rank-checker
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: trust-rank-checker
+  template:
+    metadata:
+      labels:
+        app: trust-rank-checker
+    spec:
+      containers:
+      - name: checker
+        image: i544c/trust-rank-checker:0.1
+        resources:
+          limits:
+            cpu: 0.25m
+            memory: 32Mi
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - secretRef:
+            name: trust-rank-checker

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-trust-rank-checker
+  namespace: argocd
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: trust-rank-checker.k8s.i544c.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: trust-rank-checker
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+      - trust-rank-checker.k8s.i544c.me
+      secretName: k8s-i544c-me-secret
+
