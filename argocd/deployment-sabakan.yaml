@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: sabakan
-        image: i544c/discord-bot-sabakan:0.8
+        image: i544c/discord-bot-sabakan:0.9
         ports:
         - containerPort: 3000
         envFrom:
